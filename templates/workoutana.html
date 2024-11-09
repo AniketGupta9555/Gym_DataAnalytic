@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Exercise Management</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <h1>Manage Exercises</h1>
+    <form action="/admin/exercises" method="POST">
+        <h2>Add New Exercise</h2>
+        <label for="id">ID:</label>
+        <input type="number" id="id" name="id" required>
+
+        <label for="title">Title:</label>
+        <input type="text" id="title" name="title" required>
+
+        <label for="desc">Description:</label>
+        <input type="text" id="desc" name="desc" required>
+
+        <label for="type">Type:</label>
+        <input type="text" id="type" name="type" required>
+
+        <label for="bodypart">Bodypart:</label>
+        <input type="text" id="bodypart" name="bodypart" required>
+
+        <label for="equipment">Equipment:</label>
+        <input type="text" id="equipment" name="equipment" required>
+
+        <label for="level">Level:</label>
+        <input type="text" id="level" name="level" required>
+
+        <button type="submit">Add Exercise</button>
+    </form>
+
+    <h2>Existing Exercises</h2>
+    <ul>
+        {% for exercise in exercises %}
+            <li>{{ exercise.title }}: {{ exercise.desc }} (Type: {{ exercise.type }}, Bodypart: {{ exercise.bodypart }})</li>
+        {% endfor %}
+    </ul>
+</body>
+</html>

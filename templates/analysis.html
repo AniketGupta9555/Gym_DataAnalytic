@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fitness Analysis</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>Fitness Analysis</h1>
+
+        <!-- Filter form -->
+        <form method="POST" action="/">
+            <label for="age">Age:</label>
+            <input type="text" id="age" name="age" placeholder="Enter Age">
+            <br>
+            <label for="gender">Gender:</label>
+            <select id="gender" name="gender">
+                <option value="">Select Gender</option>
+                <option value="Male">Male</option>
+                <option value="Female">Female</option>
+            </select>
+            <br>
+            <label for="workout_type">Workout Type:</label>
+            <select id="workout_type" name="workout_type">
+                <option value="">Select Workout Type</option>
+                <option value="Cardio">Cardio</option>
+                <option value="Strength">Strength</option>
+                <option value="Flexibility">Flexibility</option>
+            </select>
+            <br>
+            <button type="submit">Apply Filters</button>
+        </form>
+
+        <!-- Display analysis results -->
+        <h2>Analysis Results</h2>
+        <p>Average Calories Burned: {{ average_calories }}</p>
+        <p>Total Sessions: {{ total_sessions }}</p>
+
+        <!-- Visualizations -->
+        <h2>Visualizations</h2>
+        <h3>Average BPM Trend Over Sessions</h3>
+        <img src="{{ url_for('heart_rate_analysis') }}" alt="Heart Rate Analysis">
+
+        <h3>Average Calories Burned per Workout Type</h3>
+        <img src="{{ url_for('calories_by_workout') }}" alt="Calories Burned by Workout Type">
+
+        <h3>Workout Frequency by Age Group</h3>
+        <img src="{{ url_for('workout_frequency_by_age') }}" alt="Workout Frequency by Age Group">
+
+        <h3>BMI Distribution Among Members</h3>
+        <img src="{{ url_for('bmi_distribution') }}" alt="BMI Distribution">
+
+        <h3>Fat Percentage vs. Calories Burned</h3>
+        <img src="{{ url_for('fat_vs_calories') }}" alt="Fat Percentage vs. Calories Burned">
+
+        <h3>Workout Type Popularity</h3>
+        <img src="{{ url_for('workout_type_popularity') }}" alt="Workout Type Popularity">
+    </div>
+</body>
+</html>

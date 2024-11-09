@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gym Management System</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <script>
+        function showMemberEntry() {
+            document.getElementById("member-entry-form").style.display = "block";
+            document.getElementById("gym-details").style.display = "none";
+            document.getElementById("admin-login").style.display = "none";
+        }
+
+        function showGymDetails() {
+            document.getElementById("gym-details").style.display = "block";
+            document.getElementById("member-entry-form").style.display = "none";
+            document.getElementById("admin-login").style.display = "none";
+        }
+
+        function showAdminLogin() {
+            document.getElementById("admin-login").style.display = "block";
+            document.getElementById("member-entry-form").style.display = "none";
+            document.getElementById("gym-details").style.display = "none";
+        }
+    </script>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Welcome to the Gym Management System</h1>
+            <p>Your one-stop solution for managing gym memberships and analyzing workout data.</p>
+        </header>
+        
+        <div class="options">
+            <button onclick="showGymDetails()">View Gym Details</button>
+            <button onclick="showMemberEntry()">Member Entry</button>
+            <button onclick="showAdminLogin()">Admin Login</button>
+        </div>
+
+        <section id="gym-details" style="display: none;">
+            <h2>Gym Details</h2>
+            <p>Our gym offers a variety of facilities, including strength training, cardio equipment, group classes, and personal training services.</p>
+            <p>Join us today and start your fitness journey!</p>
+        </section>
+
+        <section id="member-entry-form" style="display: none;">
+            <h2>Gym Member Entry</h2>
+            <form action="/submit" method="POST">
+                <label for="age">Age:</label>
+                <input type="number" id="age" name="age" required>
+                
+                <label for="gender">Gender:</label>
+                <select id="gender" name="gender" required>
+                    <option value="Male">Male</option>
+                    <option value="Female">Female</option>
+                </select>
+                
+                <label for="weight">Weight (kg):</label>
+                <input type="number" id="weight" name="weight" required>
+                
+                <label for="height">Height (m):</label>
+                <input type="number" step="0.01" id="height" name="height" required>
+                
+                <label for="max_bpm">Max BPM:</label>
+                <input type="number" id="max_bpm" name="max_bpm" required>
+                
+                <label for="avg_bpm">Avg BPM:</label>
+                <input type="number" id="avg_bpm" name="avg_bpm" required>
+                
+                <label for="resting_bpm">Resting BPM:</label>
+                <input type="number" id="resting_bpm" name="resting_bpm" required>
+                
+                <label for="session_duration">Session Duration (hours):</label>
+                <input type="number" step="0.1" id="session_duration" name="session_duration" required>
+                
+                <label for="calories_burned">Calories Burned:</label>
+                <input type="number" id="calories_burned" name="calories_burned" required>
+                
+                <label for="workout_type">Workout Type:</label>
+                <input type="text" id="workout_type" name="workout_type" required>
+                
+                <label for="fat_percentage">Fat Percentage:</label>
+                <input type="number" step="0.1" id="fat_percentage" name="fat_percentage" required>
+                
+                <label for="water_intake">Water Intake (liters):</label>
+                <input type="number" step="0.1" id="water_intake" name="water_intake" required>
+                
+                <label for="workout_frequency">Workout Frequency (days/week):</label>
+                <input type="number" id="workout_frequency" name="workout_frequency" required>
+                
+                <label for="experience_level">Experience Level (1-Beginner, 3-Expert):</label>
+                <input type="number" min="1" max="3" id="experience_level" name="experience_level" required>
+                
+                <button type="submit">Submit</button>
+            </form>
+        </section>
+
+        <section id="admin-login" style="display: none;">
+            <h2>Admin Login</h2>
+            <form action="/admin" method="POST">
+                <label for="admin_username">Username:</label>
+                <input type="text" id="admin_username" name="admin_username" required>
+                
+                <label for="admin_password">Password:</label>
+                <input type="password" id="admin_password" name="admin_password" required>
+                
+                <button type="submit">Login</button>
+            </form>
+        </section>
+    </div>
+</body>
+</html>
